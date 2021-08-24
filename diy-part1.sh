@@ -23,3 +23,7 @@ echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.co
 export orig_version="$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
 sed -i "s/${orig_version}/${orig_version} (\$(date +"%Y-%m-%d"))/g" package/lean/default-settings/files/zzz-default-settings
 
+# luci-app-cpufreq
+sed -i "s/@arm/@(arm||aarch64)/g" package/lean/luci-app-cpufreq/Makefile
+sed -i "s/"services"/"system"/g" package/lean/luci-app-cpufreq/luasrc/controller/cpufreq.lua
+
