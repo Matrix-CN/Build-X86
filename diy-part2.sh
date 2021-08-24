@@ -59,4 +59,6 @@ git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 # Add OpenAppFilter
 git clone --depth=1 https://github.com/destan19/OpenAppFilter
 
+# replace cpuinfo
+cp -f $GITHUB_WORKSPACE/cpuinfo package/lean/autocore/files/arm/sbin/cpuinfo
 
