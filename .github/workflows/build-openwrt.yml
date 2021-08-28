@@ -20,8 +20,8 @@ on:
         default: 'true'
 
 env:
-  TOOLCHAIN_TAG: immortalwrt-immortalwrt-openwrt-18.06-k5.4
-  TOOLCHAIN_NAME: toolchain-image-immortalwrt-immortalwrt-openwrt-18.06-k5.4-bcm27xx-bcm2711.img
+  TOOLCHAIN_TAG: coolsnowwolf-lede-master
+  TOOLCHAIN_NAME: toolchain-image-coolsnowwolf-lede-master-bcm27xx-bcm2711.img
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
