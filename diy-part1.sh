@@ -60,3 +60,6 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter
 git clone --depth=1 https://github.com/immortalwrt/luci-app-unblockneteasemusic
 rm -rf ../lean/luci-app-unblockneteasemusic
 
+# Clone community packages to package/community
+mkdir package/community
+pushd package/community
