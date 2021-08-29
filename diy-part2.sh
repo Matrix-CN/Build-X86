@@ -48,7 +48,3 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter
 # Add luci-app-unblockneteasemusic
 rm -rf ../lean/luci-app-unblockneteasemusic
 git clone --depth=1 https://github.com/immortalwrt/luci-app-unblockneteasemusic
-
-# Add luci-app-cpufreq
-rm -rf ../package/lean/luci-app-cpufreq
-git clone --depth=1 https://github.com/immortalwrt/luci/tree/master/applications/luci-app-cpufreq
