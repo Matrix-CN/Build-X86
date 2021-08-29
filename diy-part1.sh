@@ -60,6 +60,10 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter
 git clone --depth=1 https://github.com/immortalwrt/luci-app-unblockneteasemusic
 rm -rf ../lean/luci-app-unblockneteasemusic
 
+# Add luci-app-cpufreq
+git clone --depth=1 https://github.com/immortalwrt/luci/tree/master/applications/luci-app-cpufreq
+rm -rf ../package/lean/luci-app-cpufreq
+
 # Clone community packages to package/community
 mkdir package/community
 pushd package/community
