@@ -12,39 +12,33 @@
 # 修改 argon 为默认主题,可根据你喜欢的修改成其他的（不选择那些会自动改变为默认主题的主题才有效果）
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
+# Modify default IP
+sed -i 's/192.168.1.1/192.168.5.2/g' package/base-files/files/bin/config_generate
+
+# Add build date to index page
+export orig_version="$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
+sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/lean/default-settings/files/zzz-default-settings
+
+# luci-app-cpufreq
+#sed -i "s/@arm/@(arm||aarch64)/g" ./feeds/luci/applications/luci-app-cpufreq/Makefile
+#sed -i "s/"services"/"system"/g" ./feeds/luci/applications/luci-app-cpufreq/luasrc/controller/cpufreq.lua
+# Add cpufreq
+rm -rf ./feeds/luci/applications/luci-app-cpufreq 
+svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq ./feeds/luci/applications/luci-app-cpufreq
+
 # Clone community packages to package/community
 mkdir package/community
 pushd package/community
 
-# Add luci-app-dockerman
-rm -rf ../lean/luci-app-docker
-git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-lib-docker
-
-# Add openclash
-git clone --depth=1 -b master https://github.com/vernesong/OpenClash
-
-# Add luci-app-diskman
-git clone --depth=1 https://github.com/lisaac/luci-app-diskman
-
-# Add luci-theme-argon
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
-rm -rf ../lean/luci-theme-argon
-
-# Add luci-app-vssr <M>
-git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git
-git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr
-
 # Add ServerChan
-git clone --depth=1 https://github.com/tty228/luci-app-serverchan
+#git clone --depth=1 https://github.com/tty228/luci-app-serverchan feeds/luci/applications/luci-app-serverchan
 
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
-# Add OpenAppFilter
-git clone --depth=1 https://github.com/destan19/OpenAppFilter
-
-# Add luci-app-unblockneteasemusic
-rm -rf ../lean/luci-app-unblockneteasemusic
-git clone --depth=1 https://github.com/immortalwrt/luci-app-unblockneteasemusic
+# Add luci-app-dockerman
+rm -rf ./feeds/luci/collections/luci-lib-docker
+rm -rf ./feeds/luci/applications/luci-app-docker
+rm -rf ./feeds/luci/applications/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-lib-docker
