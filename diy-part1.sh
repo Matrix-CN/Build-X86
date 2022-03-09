@@ -19,14 +19,4 @@
 # Add a feed source
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-
-# Modify default IP
-sed -i 's/192.168.1.1/192.168.5.2/g' package/base-files/files/bin/config_generate
-
-# Add build date to index page
-export orig_version="$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
-sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/lean/default-settings/files/zzz-default-settings
-
-# luci-app-cpufreq
-#sed -i "s/@arm/@(arm||aarch64)/g" package/lean/luci-app-cpufreq/Makefile
-#sed -i "s/"services"/"system"/g" package/lean/luci-app-cpufreq/luasrc/controller/cpufreq.lua
+echo 'src-git small8 https://github.com/kenzok8/small-package' >>feeds.conf.default
