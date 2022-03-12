@@ -27,8 +27,8 @@ sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/lean/
 #svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq ./feeds/luci/applications/luci-app-cpufreq
 
 # Clone community packages to package/community
-mkdir package/community
-pushd package/community
+#mkdir package/community
+#pushd package/community
 
 # Add ServerChan
 #git clone --depth=1 https://github.com/tty228/luci-app-serverchan feeds/luci/applications/luci-app-serverchan
@@ -37,8 +37,8 @@ pushd package/community
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
 # Add luci-app-dockerman
-rm -rf ./feeds/luci/collections/luci-lib-docker
-rm -rf ./feeds/luci/applications/luci-app-docker
-rm -rf ./feeds/luci/applications/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+#rm -rf ./feeds/luci/collections/luci-lib-docker
+#rm -rf ./feeds/luci/applications/luci-app-docker
+#rm -rf ./feeds/luci/applications/luci-app-dockerman
+#git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
+#git clone --depth=1 https://github.com/lisaac/luci-lib-docker
