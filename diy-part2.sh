@@ -31,19 +31,22 @@ sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/lean/
 #pushd package/community
 
 # Add luci-theme-argon
-#rm -rf ./feeds/luci/themes/luci-theme-argon
-#git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
-#git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
+rm -rf ./feeds/luci/themes/luci-theme-argon
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 
 # Add ServerChan
 #git clone --depth=1 https://github.com/tty228/luci-app-serverchan feeds/luci/applications/luci-app-serverchan
+
+# Add openclash
+git clone --depth=1 -b master https://github.com/vernesong/OpenClash
 
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
 # Add luci-app-dockerman
-#rm -rf ./feeds/luci/collections/luci-lib-docker
-#rm -rf ./feeds/luci/applications/luci-app-docker
-#rm -rf ./feeds/luci/applications/luci-app-dockerman
-#git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
-#git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+rm -rf ./feeds/luci/collections/luci-lib-docker
+rm -rf ./feeds/luci/applications/luci-app-docker
+rm -rf ./feeds/luci/applications/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-lib-docker
