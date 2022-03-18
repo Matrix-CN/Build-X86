@@ -26,15 +26,10 @@ sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/lean/
 #rm -rf ./feeds/luci/applications/luci-app-cpufreq 
 #svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq ./feeds/luci/applications/luci-app-cpufreq
 
-# Clone community packages to package/community
-mkdir package/community
-pushd package/community
-
-
 # Add luci-theme-argon
 rm -rf feeds/luci/themes/luci-theme-argon
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 # Add ServerChan
 #git clone --depth=1 https://github.com/tty228/luci-app-serverchan feeds/luci/applications/luci-app-serverchan
@@ -51,3 +46,6 @@ rm -rf feeds/luci/applications/luci-app-docker
 rm -rf feeds/luci/applications/luci-app-dockerman
 git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
 git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+
+./scripts/feeds update -a
+./scripts/feeds install -a
