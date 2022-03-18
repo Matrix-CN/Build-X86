@@ -32,7 +32,7 @@ pushd package/community
 
 # Add luci-theme-argon
 rm -rf ./feeds/luci/themes/luci-theme-argon
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 
 # Add ServerChan
