@@ -35,7 +35,7 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 #git clone --depth=1 https://github.com/tty228/luci-app-serverchan feeds/luci/applications/luci-app-serverchan
 
 # Add openclash
-git clone --depth=1 -b master https://github.com/vernesong/OpenClash
+git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
