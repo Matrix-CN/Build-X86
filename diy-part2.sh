@@ -44,8 +44,8 @@ git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 rm -rf feeds/luci/collections/luci-lib-docker
 rm -rf feeds/luci/applications/luci-app-docker
 rm -rf feeds/luci/applications/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+git clone --depth=1 https://github.com/lisaac/luci-app-dockerman package/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-lib-docker package/luci-lib-docker
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
