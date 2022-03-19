@@ -41,11 +41,8 @@ git clone --depth=1 -b master https://github.com/vernesong/OpenClash
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
 # Add luci-app-dockerman
-rm -rf feeds/luci/collections/luci-lib-docker
-rm -rf feeds/luci/applications/luci-app-docker
 rm -rf feeds/luci/applications/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-app-dockerman package/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-lib-docker package/luci-lib-docker
+svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
