@@ -37,6 +37,9 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 # Add openclash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
+# Add bypass
+git clone --depth=1 https://github.com/kiddin9/openwrt-bypass.git package/luci-app-bypass
+
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
