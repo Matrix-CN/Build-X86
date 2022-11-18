@@ -17,7 +17,13 @@
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
 # Add a feed source
+#添加helloworld
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+#添加passwall
 echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> "feeds.conf.default"
 echo "src-git passwallluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> "feeds.conf.default"
+#添加bypass
 echo "src-git bypass https://github.com/kiddin9/openwrt-bypass.git" >> "feeds.conf.default"
+#添加passwall2
+echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall.git;packages"
+echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git"
