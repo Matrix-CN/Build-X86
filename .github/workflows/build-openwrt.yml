@@ -112,11 +112,11 @@ jobs:
     - name: SSH connection to Actions
       uses: appleboy/ssh-action@v0.1.8
       with:
-        host: ${{ secrets.zzm }}
-        username: ${{ secrets.root }}
-        password: ${{ secrets.password }}
-        port: ${{ secrets.22 }}
-        script: whoami    
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: whoami  
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
     
     - name: Download package
