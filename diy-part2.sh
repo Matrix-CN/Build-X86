@@ -24,19 +24,20 @@ rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
-# Add ServerChan
-#git clone --depth=1 https://github.com/tty228/luci-app-serverchan feeds/luci/applications/luci-app-serverchan
+# alist
+git clone https://github.com/sbwml/luci-app-alist package/alist
+rm -rf feeds/packages/lang/golang
+svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
 
 # Add openclash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
-
-# Add subconverter
-git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
-
-# Add luci-app-dockerman
-#rm -rf feeds/luci/applications/luci-app-dockerman
-#git clone --depth=1 https://github.com/lisaac/luci-app-dockerman package/luci-app-dockerman
+# Add luci-aliyundrive-webdav
+rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav 
+rm -rf ../../customfeeds/packages/multimedia/aliyundrive-webdav
+svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
+svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
+popd
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
