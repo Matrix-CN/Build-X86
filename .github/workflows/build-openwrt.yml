@@ -109,7 +109,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    - name: SSH connection to Actions
+    - name: Start SSH session
       uses: luchihoratiu/debug-via-ssh@main
       with:
         NGROK_AUTH_TOKEN: ${{ secrets.2NR7tj5N7GymjEdx49CZFbk9Ttx_3DsMvnpXqBnDrCa2CmATe }}
