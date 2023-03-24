@@ -107,8 +107,8 @@ jobs:
     - name: Start SSH session
       uses: luchihoratiu/debug-via-ssh@main
       with:
-        NGROK_AUTH_TOKEN: ${{secrets.2NRAsglco0JvtvwDEFLCy2DiSX3_4NvFeYis536xJSiTwLxjW}}
-        SSH_PASS: ${{secrets.Zzm19940227}}  
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+        SSH_PASS: ${{ secrets.SSH_PASS }}
           
     - name: Download package
       id: package
