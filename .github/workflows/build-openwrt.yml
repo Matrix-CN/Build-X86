@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
     inputs:
       ssh:
-        description: 'SSH connection to Actions'
+        description: 'Start SSH via ngrok'
         required: true
         default: 'true'
 
@@ -109,7 +109,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    - name: SSH connection to Actions
+    - name: Start SSH via ngrok
       uses: P3TERX/ssh2actions@main
       with:
         mode: ngrok
