@@ -30,8 +30,5 @@ sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/emort
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-# Add openclash
-git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
-
 ./scripts/feeds update -a
 ./scripts/feeds install -a
