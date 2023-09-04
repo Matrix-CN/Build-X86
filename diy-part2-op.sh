@@ -13,7 +13,7 @@
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.2.2/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 # Add build date to index page
 export orig_version="$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
@@ -33,11 +33,11 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add luci-aliyundrive-webdav
-rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav 
-rm -rf ../../customfeeds/packages/multimedia/aliyundrive-webdav
-svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
-svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
-popd
+#rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav 
+#rm -rf ../../customfeeds/packages/multimedia/aliyundrive-webdav
+#svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
+#svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
+#popd
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
