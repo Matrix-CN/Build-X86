@@ -20,15 +20,15 @@ export orig_version="$(cat "package/lean/default-settings/files/zzz-default-sett
 sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/lean/default-settings/files/zzz-default-settings
 
 # Add luci-theme-argon
-rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf ./feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 #Add luci-app-mosdns
 # remove v2ray-geodata package from feeds (openwrt-22.03 & master)
-rm -rf feeds/packages/net/v2ray-geodata
-rm -rf feeds/luci/applications/luci-app-mosdns/
-rm -rf feeds/packages/net/mosdns
+rm -rf ./feeds/packages/net/v2ray-geodata
+rm -rf ./feeds/luci/applications/luci-app-mosdns/
+rm -rf ./feeds/packages/net/mosdns
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
@@ -39,6 +39,12 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # Add openclash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
+
+#smartdns
+rm -rf ./feeds/packages/net/smartdns
+rm -rf ./feeds/luci/applications/luci-app-smartdns
+git clone https://github.com/pymumu/smartdns.git package/smartdns
+git clone https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 
 # Add luci-aliyundrive-webdav
 #rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav 
