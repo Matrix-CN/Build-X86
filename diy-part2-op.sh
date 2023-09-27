@@ -26,11 +26,11 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 
 #Add luci-app-mosdns
 # remove v2ray-geodata package from feeds (openwrt-22.03 & master)
-rm -rf ./feeds/packages/net/v2ray-geodata
-rm -rf ./feeds/luci/applications/luci-app-mosdns/
-rm -rf ./feeds/packages/net/mosdns
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+#rm -rf ./feeds/packages/net/v2ray-geodata
+#rm -rf ./feeds/luci/applications/luci-app-mosdns/
+#rm -rf ./feeds/packages/net/mosdns
+#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # alist
 #git clone https://github.com/sbwml/luci-app-alist package/alist
@@ -40,11 +40,15 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 # Add openclash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
+# Add iStore
+svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
+svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
+
 #smartdns
-rm -rf ./feeds/packages/net/smartdns
-rm -rf ./feeds/luci/applications/luci-app-smartdns
-git clone https://github.com/pymumu/smartdns.git package/smartdns
-git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+#rm -rf ./feeds/packages/net/smartdns
+#rm -rf ./feeds/luci/applications/luci-app-smartdns
+#git clone https://github.com/pymumu/smartdns.git package/smartdns
+#git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 
 # Add luci-aliyundrive-webdav
 #rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav 
