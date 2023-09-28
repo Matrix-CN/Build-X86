@@ -41,8 +41,8 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add iStore
-svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
-svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
+#svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
+#svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
 
 #smartdns
 #rm -rf ./feeds/packages/net/smartdns
