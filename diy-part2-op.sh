@@ -24,6 +24,11 @@ rm -rf ./feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
+# Add luci-theme-design
+rm -rf ./feeds/luci/themes/luci-theme-design
+git clone https://github.com/gngpp/luci-theme-design.git  package/luci-theme-design
+git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-design-config
+
 #Add luci-app-mosdns
 # remove v2ray-geodata package from feeds (openwrt-22.03 & master)
 #rm -rf ./feeds/packages/net/v2ray-geodata
