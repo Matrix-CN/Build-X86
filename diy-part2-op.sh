@@ -43,7 +43,7 @@ git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-d
 #svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
 
 # Add openclash
-git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
+#git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add iStore
 #svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
