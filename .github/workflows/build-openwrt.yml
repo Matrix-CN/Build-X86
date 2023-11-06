@@ -106,7 +106,7 @@ jobs:
     - name: Cache
       uses: HiGarfield/cachewrtbuild@main
       with:
-        mixkey: ${{ env.TARGET_DEVICE_ARCH }}
+        ccache: 'true'
         prefix: ${{ github.workspace }}/openwrt        
     
     - name: Load custom feeds
