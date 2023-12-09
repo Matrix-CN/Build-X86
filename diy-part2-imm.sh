@@ -16,11 +16,14 @@
 sed -i 's/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.2.2/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 # 移除 SNAPSHOT 标签
 sed -i 's,-SNAPSHOT,,g' include/version.mk
 sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
+
+#Add luci-app-daed-next
+git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
 
 # Add build date to index page
 export orig_version="$(cat "package/emortal/default-settings/files/99-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
