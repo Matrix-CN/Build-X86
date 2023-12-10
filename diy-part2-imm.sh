@@ -26,7 +26,7 @@ sed -i 's,-SNAPSHOT,,g' include/version.mk
 sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 
 #Add luci-app-daed-next
-git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
+#git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
 
 # Add build date to index page
 export orig_version="$(cat "package/emortal/default-settings/files/99-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
