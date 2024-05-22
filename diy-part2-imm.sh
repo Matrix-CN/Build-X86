@@ -22,8 +22,11 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 #sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 
 #Add passwall
-rm -rf ./feeds/luci/applications/luci-app-passwall
+rm -rf ./feeds/luci/applications/luci-app-passwal
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+#rm -rf ./feeds/package/luci-app-passwall/Makefile
+curl -fsSL  https://github.com/immortalwrt/luci/blob/master/applications/luci-app-passwall/Makefile > package/luci-app-passwall/Makefile
+
 
 # 移除 SNAPSHOT 标签
 sed -i 's,-SNAPSHOT,,g' include/version.mk
