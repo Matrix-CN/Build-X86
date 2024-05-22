@@ -22,9 +22,9 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 #sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 
 #Add passwall
-rm -rf ./feeds/luci/applications/luci-app-passwal
+rm -rf ./feeds/luci/applications/luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-cd package/luci-app-passwall
+cd ./feeds/package/luci-app-passwall
 curl -o Makefile https://github.com/immortalwrt/luci/blob/master/applications/luci-app-passwall/Makefile
 
 #Add tinyfilemanager
