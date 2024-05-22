@@ -21,6 +21,10 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 # 修改主机名字，把OpenWrt-123修改你喜欢的就行（不能纯数字或者使用中文）
 #sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 
+#Add passwall
+rm -rf ./feeds/luci/applications/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+
 # 移除 SNAPSHOT 标签
 sed -i 's,-SNAPSHOT,,g' include/version.mk
 sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
