@@ -27,6 +27,12 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 #rm -rf ./feeds/package/luci-app-passwall/Makefile
 curl -fsSL  https://github.com/immortalwrt/luci/blob/master/applications/luci-app-passwall/Makefile > package/luci-app-passwall/Makefile
 
+#Add tinyfilemanager
+git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
+pushd package/luci-app-tinyfilemanager
+umask 022
+git checkout
+popd
 
 # 移除 SNAPSHOT 标签
 sed -i 's,-SNAPSHOT,,g' include/version.mk
