@@ -25,6 +25,9 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 sed -i 's,-SNAPSHOT,,g' include/version.mk
 sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 
+#Add tinyfilemanager
+git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
+
 #Add luci-app-daed-next
 #git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
 
