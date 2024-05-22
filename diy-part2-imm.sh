@@ -24,8 +24,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 #Add passwall
 rm -rf ./feeds/luci/applications/luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-cd ./feeds/package/luci-app-passwall
-curl -o Makefile https://github.com/immortalwrt/luci/blob/master/applications/luci-app-passwall/Makefile
+wget https://raw.githubusercontent.com/immortalwrt/luci/master/applications/luci-app-passwall/Makefile -O package/luci-app-passwall/Makefile
 
 #Add tinyfilemanager
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
