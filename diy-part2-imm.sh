@@ -27,6 +27,10 @@ sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 
 #Add tinyfilemanager
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
+pushd package/luci-app-tinyfilemanager
+umask 022
+git checkout
+popd
 
 #Add luci-app-daed-next
 #git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
