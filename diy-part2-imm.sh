@@ -21,11 +21,6 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 # 修改主机名字，把OpenWrt-123修改你喜欢的就行（不能纯数字或者使用中文）
 #sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 
-#Add passwall
-rm -rf ./feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-wget https://raw.githubusercontent.com/immortalwrt/luci/master/applications/luci-app-passwall/Makefile -O package/passwall/luci-app-passwall/Makefile
-
 #Add tinyfilemanager
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
 pushd package/luci-app-tinyfilemanager
