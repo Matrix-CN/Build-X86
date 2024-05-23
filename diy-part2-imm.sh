@@ -22,11 +22,11 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 #sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 
 #Add tinyfilemanager
-git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
-pushd package/luci-app-tinyfilemanager
-umask 022
-git checkout
-popd
+#git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
+#pushd package/luci-app-tinyfilemanager
+#umask 022
+#git checkout
+#popd
 
 # 移除 SNAPSHOT 标签
 sed -i 's,-SNAPSHOT,,g' include/version.mk
