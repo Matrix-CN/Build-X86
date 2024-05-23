@@ -43,11 +43,5 @@ sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-# echo '### Argon Theme Config ###'
-rm -rf feeds/luci/themes/luci-theme-argon
-git clone -b master  https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-rm -rf feeds/luci/applications/luci-app-argon-config 
-git clone https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications/luci-app-argon-config
-
 ./scripts/feeds update -a
 ./scripts/feeds install -a
