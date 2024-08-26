@@ -132,8 +132,7 @@ jobs:
         NGROK_REGION: us
 
         # This password you will use when authorizing via SSH
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-        
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}   
     
     - name: Download package
       id: package
