@@ -35,8 +35,17 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 #Add luci-app-daed-next
 #git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
 
+#Add luci-theme-argon
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+
+#Add luci-app-netdata
+git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-netdata.git package/luci-app-netdata
+
+#Add autocore
+git clone https://github.com/immortalwrt/immortalwrt/tree/openwrt-23.05/package/emortal/autocore package/emortal/autocore
+
+git clone https://github.com/immortalwrt/immortalwrt/tree/openwrt-23.05/package/emortal/ipv6-helper package/emortal/ipv6-helper
 
 # Add build date to index page
 #export orig_version="$(cat "package/emortal/default-settings/files/99-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
