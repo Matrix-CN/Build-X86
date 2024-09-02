@@ -23,9 +23,9 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-23.05
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config-imm
-  DIY_P1_SH: diy-part1-imm.sh
-  DIY_P2_SH: diy-part2-imm.sh
+  CONFIG_FILE: configs/.config-imm
+  DIY_P1_SH: scripts/diy-part1-imm.sh
+  DIY_P2_SH: scripts/diy-part2-imm.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
