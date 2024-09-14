@@ -61,6 +61,6 @@ git clone https://github.com/gngpp/luci-app-design-config.git package/luci-app-d
 #svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
 #svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
 #popd
-wget https://raw.githubusercontent.com/zxlhhyccc/packages/refs/heads/patch-5/utils/tini/patches/002-Support-POSIX-basename-from-musl-libc.patch  feeds/packages/utils/tini/patches/002-Support-POSIX-basename-from-musl-libc.patch
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
