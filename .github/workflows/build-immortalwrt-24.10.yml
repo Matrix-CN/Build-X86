@@ -123,7 +123,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    - name: Setup tmate session
+    - name: SSH connection to Actions
       uses: mxschmitt/action-tmate@v3  
     
     - name: Download package
