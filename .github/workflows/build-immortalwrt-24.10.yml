@@ -124,7 +124,7 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
     - name: SSH connection to Actions
-      uses: mxschmitt/action-tmate@v3  
+      uses: Matrix-CN/ssh2actions/main  
     
     - name: Download package
       id: package
