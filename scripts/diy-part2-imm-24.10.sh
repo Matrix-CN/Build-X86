@@ -39,6 +39,9 @@ sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 #export orig_version="$(cat "package/emortal/default-settings/files/99-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
 #sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/emortal/default-settings/files/99-default-settings
 
+#rust报错时启用
+#sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
+
 #Add Mosdns
 #git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 #git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
