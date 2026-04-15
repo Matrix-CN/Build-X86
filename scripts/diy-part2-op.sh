@@ -23,6 +23,9 @@ sed -i "/timezone='.*'/a\set system.@system[-1].zonename='Asia/Shanghai'" packag
 # 修改主机名字，把OpenWrt-123修改你喜欢的就行（不能纯数字或者使用中文）
 #sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 
+#Add luci-app-eqosplus
+git clone https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
+
 #Add luci-theme-argon
 git clone --depth=1 -b master https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone --depth=1 -b master https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
