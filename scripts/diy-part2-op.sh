@@ -30,6 +30,9 @@ sed -i "/timezone='.*'/a\set system.@system[-1].zonename='Asia/Shanghai'" packag
 #Add luci-app-eqosplus
 git clone https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 
+#Add luci-app-netdata
+git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
+
 # autocore
 git clone --depth=1 -b openwrt-25.12 https://github.com/sbwml/autocore-arm package/system/autocore
 
