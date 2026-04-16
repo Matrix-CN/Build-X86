@@ -24,7 +24,7 @@ sed -i "/timezone='.*'/a\set system.@system[-1].zonename='Asia/Shanghai'" packag
 #sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 
 #Add luci-app-eqosplus
-git clone https://github.com/Matrix-CN/luci-app-eqos package/luci-app-eqos
+git clone https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 
 # autocore
 git clone --depth=1 -b openwrt-25.12 https://github.com/sbwml/autocore-arm package/system/autocore
