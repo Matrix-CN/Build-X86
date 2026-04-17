@@ -38,70 +38,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Set time zone
+      run: sudo timedatectl set-timezone 'Asia/Shanghai'
+
+    - name: Show system
+      run: |
+        lscpu
+        free -h
+        df -Th
+        uname -a
+
     - name: 创建编译空间挂载点
       run: |
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         
-    - name: Maximize build space
+    - name: 最大化编译空间
       uses: easimon/maximize-build-space@master
       with:
+        root-reserve-mb: 2048
         swap-size-mb: 1024
-        temp-reserve-mb: 512
-        root-reserve-mb: 4608
         build-mount-path: /workdir
+        overprovision-lvm: 'true'
         remove-dotnet: 'true'
         remove-android: 'true'
         remove-haskell: 'true'
         remove-codeql: 'true'
-    
-    - name: Checkout
-      uses: actions/checkout@v4
-           
-    - name: 检查服务器配置
-      run: |
-        echo "警告⚠"
-        echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
-        echo "云编译建议取消勾选Node.js及其相关插件！"
-        echo "已知CPU型号（降序）：8370C,8272CL,8171M,E5系列"
-        echo "--------------------------CPU信息--------------------------"
-        echo "CPU物理数量:$(cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l)"
-        echo -e "CPU核心及版本信息：$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
-        echo "--------------------------内存信息--------------------------"
-        echo "已安装内存详细信息："
-        sudo lshw -short -C memory | grep GiB
-        echo -e "\n"
-        echo "--------------------------硬盘信息--------------------------"
-        echo -e  "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l) \n"
-        echo "硬盘详情："
-        df -Th
-    
-    - name: Initialization environment
+        remove-docker-images: 'true'
+        
+    - name: Build System Setup
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-         chmod +x $FREE_DISK_SH && $FREE_DISK_SH
-         sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
-         sudo -E apt-get -qq update -y
-         sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
-         bzip2 ccache clang cmake cpio curl device-tree-compiler flex gawk gcc-multilib g++-multilib gettext \
-         genisoimage git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev \
-         libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev \
-         libreadline-dev libssl-dev libtool llvm lrzsz msmtp ninja-build p7zip p7zip-full patch pkgconf \
-         python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion \
-         swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
-         sudo -E apt-get -qq autoremove --purge
-         sudo -E apt-get -qq clean
-         sudo timedatectl set-timezone "$TZ"
-         echo "硬盘详情："
-         df -Th 
+        sudo apt-get update
+        sudo apt-get install -y build-essential flex bison cmake g++ gawk gcc-multilib g++-multilib gettext git libfuse-dev libncurses5-dev libssl-dev python3 python3-pip python3-ply python3-pyelftools rsync unzip zlib1g-dev file wget subversion patch upx-ucl autoconf automake curl asciidoc binutils bzip2 lib32gcc-s1 libc6-dev-i386 uglifyjs msmtp texinfo libreadline-dev libglib2.0-dev xmlto libelf-dev libtool autopoint antlr3 gperf ccache swig coreutils haveged scons libpython3-dev rename qemu-utils
+        sudo apt-get clean
+        git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
     
     - name: 克隆源码
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt    
+        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
     
     - name: Load custom feeds
       run: |
@@ -125,22 +107,9 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
     - name: SSH connection to Actions
-      uses: ZZM365-CN/ssh2actions@main
-      with:
-        mode: ngrok
+      uses: Matrix-CN/ssh2actions@main 
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        # After sign up on the https://ngrok.com
-        # You can find this token here: https://dashboard.ngrok.com/auth/your-authtoken
-        NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
     
-        # ngrok server region [us, eu, au, ap, sa, jp, in] (optional, default: us)
-        # You can find this server region here: https://ngrok.com/docs#global-locations
-        NGROK_REGION: us
-
-        # This password you will use when authorizing via SSH
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-       
     - name: Download package
       id: package
       run: |
@@ -160,17 +129,10 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-    
+
     - name: Check space usage
       if: (!cancelled())
-      run: df -hT
-
-    - name: Upload bin directory
-      uses: actions/upload-artifact@main
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
-      with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin
+      run: df -hT    
 
     - name: Organize files
       id: organize
@@ -182,43 +144,14 @@ jobs:
         echo "status=success" >>$GITHUB_OUTPUT
     
     - name: Upload firmware directory
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
-    
-    - name: Generate release tag
-      id: tag
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
-        touch release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "::set-output name=status::success"
-    
-    - name: Upload firmware to release
-      uses: softprops/action-gh-release@v2
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASES_TOKEN }}
-      with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
-
+        
     - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@v2
+      uses: Mattraks/delete-workflow-runs@v2.1.0
       with:
         retain_days: 1
-        keep_minimum_runs: 3
-
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.3.4
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 3
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        keep_minimum_runs: 3  
