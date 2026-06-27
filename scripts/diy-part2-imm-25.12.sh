@@ -13,7 +13,7 @@
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 # 修改 argon 为默认主题,可根据你喜欢的修改成其他的（不选择那些会自动改变为默认主题的主题才有效果)
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
@@ -34,6 +34,10 @@ sed -i 's,-SNAPSHOT,,g' package/base-files/image-config.in
 
 #Add luci-app-daed-next
 #git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
+
+#Add luci-theme-aurora
+git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
+git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
 
 # Add build date to index page
 #export orig_version="$(cat "package/emortal/default-settings/files/99-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
