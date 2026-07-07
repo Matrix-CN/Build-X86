@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build ImmortalWrt 25.12
+name: Build ImmortalWrt
 
 on:
   repository_dispatch:
@@ -23,9 +23,9 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-25.12
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: configs/.config-imm-25.12
-  DIY_P1_SH: scripts/diy-part1-imm-25.12.sh
-  DIY_P2_SH: scripts/diy-part2-imm-25.12.sh
+  CONFIG_FILE: configs/.config-immortalwrt
+  DIY_P1_SH: scripts/diy-part1-immortalwrt.sh
+  DIY_P2_SH: scripts/diy-part2-immortalwrt.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
