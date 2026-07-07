@@ -19,3 +19,4 @@
 #echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 #echo 'src-git openclash https://github.com/vernesong/OpenClash.git' >>feeds.conf.default
 #echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
+echo 'src-git Bandix https://github.com/timsaya/luci-app-bandix' >>feeds.conf.default
