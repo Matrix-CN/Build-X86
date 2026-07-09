@@ -23,7 +23,7 @@ git clone https://github.com/timsaya/openwrt-bandix.git package/bandix
 git clone https://github.com/timsaya/luci-app-bandix.git package/luci-app-bandix
 
 # 修改主机名字，把OpenWrt-123修改你喜欢的就行（不能纯数字或者使用中文）
-sed -i 's/ImmortalWrt/E52C/g' package/base-files/files/bin/config_generate
+#sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 
 #Add tinyfilemanager
 #git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/muink/luci-app-tinyfilemanager.git package/luci-app-tinyfilemanager
