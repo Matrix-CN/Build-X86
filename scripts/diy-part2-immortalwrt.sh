@@ -18,9 +18,9 @@
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
-# Add luci-app-bandix
-git clone https://github.com/timsaya/openwrt-bandix.git package/bandix
-git clone https://github.com/timsaya/luci-app-bandix.git package/luci-app-bandix
+# Add luci-app-bandix-plus
+git clone https://github.com/timsaya/openwrt-bandix-plus.git package/bandix-plus
+git clone https://github.com/timsaya/luci-app-bandix-plus.git package/luci-app-bandix-plus
 
 # 修改主机名字，把OpenWrt-123修改你喜欢的就行（不能纯数字或者使用中文）
 #sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
