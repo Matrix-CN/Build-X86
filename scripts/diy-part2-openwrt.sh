@@ -38,10 +38,7 @@ git clone https://github.com/timsaya/luci-app-bandix-plus.git package/luci-app-b
 git clone --depth=1 -b openwrt-25.12 https://github.com/sbwml/autocore-arm package/system/autocore
 
 #Add luci-theme-argon
-git clone --depth=1 -b master https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone --depth=1 -b master https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-
-
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
