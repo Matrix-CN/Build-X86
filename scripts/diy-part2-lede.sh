@@ -23,7 +23,6 @@ sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" package/lean/
 # Add luci-theme-argon
 rm -rf ./feeds/luci/themes/luci-theme-argon
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
 #Add luci-app-mosdns
 # remove v2ray-geodata package from feeds (openwrt-22.03 & master)
