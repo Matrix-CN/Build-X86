@@ -34,6 +34,10 @@ git clone https://github.com/immortalwrt/homeproxy.git package/luci-app-homeprox
 git clone https://github.com/timsaya/openwrt-bandix-plus.git package/bandix-plus
 git clone https://github.com/timsaya/luci-app-bandix-plus.git package/luci-app-bandix-plus
 
+#Add luci-theme-aurora
+git clone https://github.com/eamonxg/luci-theme-aurora.git package/luci-theme-aurora
+git clone https://github.com/eamonxg/luci-app-aurora-config.git package/luci-app-aurora-config
+
 # autocore
 git clone --depth=1 -b openwrt-25.12 https://github.com/sbwml/autocore-arm package/system/autocore
 
